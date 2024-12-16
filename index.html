@@ -137,19 +137,27 @@
             const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
             const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
 
-            const displayText = `${years > 0 ? `<span class="highlight">${years}</span> anni, ` : ''}` +
-                `${months > 0 ? `<span class="highlight">${months}</span> mesi, ` : ''}` +
-                `<span class="highlight">${days}</span> giorni`;
+            // Modifica per la parte degli anni
+            let yearsText = '';
+            if (years > 0) {
+                yearsText = years === 1 ? '1 anno' : `${years} anni`;
+            }
+
+            const monthsText = months > 0 ? `${months} mesi` : '';
+            const daysText = `${days} giorni`;
+
+            const displayText = [yearsText, monthsText, daysText].filter(Boolean).join(', ');
 
             document.getElementById('timer').innerHTML = displayText;
 
             // Crea il messaggio con il saluto dinamico
             const greeting = getGreeting();
-            const whatsappMessage = `${greeting}, avrei un reclamo da farle. Stiamo insieme da ${years > 0 ? years : 0} anni, ${months > 0 ? months : 0} mesi, e ${days} giorni, e ancora non...`;
+            const whatsappMessage = `${greeting}, avrei un reclamo da farle. Stiamo insieme da ${displayText}, e ancora non...`;
 
             // Imposta il link di WhatsApp con il messaggio predefinito
             document.getElementById('whatsappLink').href = `https://wa.me/393484601320?text=${encodeURIComponent(whatsappMessage)}`;
         }
+
 
         function addHeart(event) {
             const heart = document.createElement('div');
