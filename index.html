@@ -9,25 +9,29 @@
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             background-color: #141414;
             color: #e4e4e4;
             text-align: center;
+            min-height: 100vh; /* Per garantire l'altezza completa */
         }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        h1, h2 {
+            font-size: 1.8rem;
+            margin: 1rem 0;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 1rem 0;
         }
 
         #timer {
             font-size: 1.5rem;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
         }
 
         .highlight {
@@ -35,9 +39,9 @@
             color: #a82ecd;
         }
 
-        p {
-            padding-left: 20px;
-            padding-right: 20px;
+        .footer {
+            margin-top: auto; /* Spinge l'elemento verso il fondo */
+            font-size: 0.8rem;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -47,18 +51,21 @@
     <h2>Ciao Amore Mio</h2>
     <p>Volevo solo dirti che ti amo tantissimo, e spero che tu possa gradire questo regalino🎁<br>
         <br>Ci ho messo davvero molto tempo ed impegno nel prepararlo, soprattutto trovare tutte le canzoni non è stato
-        facile, e
-        spero che alcune non ti facciano "cringiare". <br>Ma tutto sommato, hanno un bel testo, anche se alcune non sono del
-        tuo genere preferito🖤<br><br><br>
+        facile, e spero che alcune non ti facciano "cringiare". <br>Ma tutto sommato, hanno un bel testo, anche se alcune
+        non sono del tuo genere preferito🖤
     </p>
 
     <p>Ricordo che mi dissi qualcosa riguardo il tener conto dei mesi e degli anni che passano, che non ci fai caso o
-        semplicemente non ti va di fare i conti.<br><br><br><br>Quindi, quando vorrai, te lo ricorderà questa pagina creata
-        apposta per te che<br><br><b>STIAMO INSIEME DA</b></p>
+        semplicemente non ti va di fare i conti. <br>Quindi, quando vorrai, te lo ricorderà questa pagina creata
+        apposta per te che<br><br><b>STIAMO INSIEME DA:</b>
+    </p>
     <div id="timer">Caricamento...</div>
-    <br><br><br><br>
-    <h2>Ti Amo</h2><br><br>
-    <p style="font-size:0.7rem;">(la pagina calcola in automatico i secondi, i giorni, <i><b>tutte cose tutte cose ecc...</b></i> troppo nerd? 🖤)</p>
+    <h2>Ti Amo</h2>
+
+    <!-- Footer -->
+    <div class="footer">
+        <small>(la pagina calcola in automatico i secondi, i giorni, <i><b>tutte cose tutte cose ecc...</b></i> troppo nerd? 🖤)</small>
+    </div>
 
     <script>
         function updateTimer() {
