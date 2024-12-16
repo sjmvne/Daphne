@@ -16,9 +16,11 @@
             color: #e4e4e4;
             text-align: center;
             min-height: 100vh; /* Per garantire l'altezza completa */
+            overflow: hidden; /* Per evitare che i cuori "escono" fuori dalla pagina */
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             font-size: 1.8rem;
             margin: 1rem 0;
         }
@@ -32,6 +34,7 @@
         #timer {
             font-size: 1.5rem;
             margin-top: 1rem;
+            cursor: pointer;
         }
 
         .highlight {
@@ -40,8 +43,28 @@
         }
 
         .footer {
-            margin-top: auto; /* Spinge l'elemento verso il fondo */
+            margin-top: auto;
+            /* Spinge l'elemento verso il fondo */
             font-size: 0.8rem;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff69b4;
+            animation: floatUp 2s ease-in-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0.5);
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -51,21 +74,24 @@
     <h2>Ciao Amore Mio</h2>
     <p>Volevo solo dirti che ti amo tantissimo, e spero che tu possa gradire questo regalino🎁<br>
         <br>Ci ho messo davvero molto tempo ed impegno nel prepararlo, soprattutto trovare tutte le canzoni non è stato
-        facile, e spero che alcune non ti facciano "cringiare". <br>Ma tutto sommato, hanno un bel testo, anche se non sono tutte del tuo genere preferito🖤
+        facile, e spero che alcune non ti facciano "cringiare". <br>Ma tutto sommato, hanno un bel testo, anche se non
+        sono tutte del tuo genere preferito🖤
     </p>
 
     <p>Ricordo che mi dissi qualcosa riguardo il tener conto dei mesi e degli anni che passano, che non ci fai caso o
         semplicemente non ti va di fare i conti. <br>Quindi, quando vorrai, te lo ricorderà questa pagina creata
-        apposta per te che...<br><br><b>STIAMO INSIEME DA:</b>
+        apposta per te che...<br><br><b>SOPPORTI LA TUA COZZA DA:</b>
     </p>
     <div id="timer">Caricamento...</div>
 
     <!-- Footer -->
     <div class="footer">
-        <small>(la pagina calcola in automatico i secondi, i giorni, <i><b>tutte cose tutte cose ecc...</b></i> troppo nerd? 🖤)</small>
+        <small>(la pagina calcola in automatico i secondi, i giorni, <i><b>tutte cose tutte cose ecc...</b></i> troppo
+            nerd? 🖤)</small>
     </div>
 
     <script>
+        const hearts = ['💜', '🖤', '🤍', '💚', '💙'];
         function updateTimer() {
             const startDate = new Date('2024-08-25T00:00:00');
             const now = new Date();
@@ -82,6 +108,38 @@
             document.getElementById('timer').innerHTML = displayText;
         }
 
+        function addHeart(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+
+            // Scegli un cuore casuale
+            const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.textContent = randomHeart;
+
+            // Genera una dimensione casuale per il cuore
+            const size = Math.random() * 2 + 1; // Dimensione tra 1 e 3 rem
+            heart.style.fontSize = `${size}rem`;
+
+            // Posizionare il cuore nel punto cliccato
+            heart.style.left = `${event.clientX}px`;
+            heart.style.top = `${event.clientY}px`;
+
+            // Aggiungi una rotazione casuale iniziale
+            const rotation = Math.random() * 360; // Rotazione tra 0 e 360 gradi
+            heart.style.transform = `rotate(${rotation}deg)`;
+
+            document.body.appendChild(heart);
+
+            // Rimuovere il cuore dopo l'animazione
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        // Aggiungi listener al timer
+        document.getElementById('timer').addEventListener('click', addHeart);
+
+        // Aggiorna il timer
         updateTimer();
         setInterval(updateTimer, 1000 * 60 * 60 * 24); // Aggiorna ogni giorno
     </script>
