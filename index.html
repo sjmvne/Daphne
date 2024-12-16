@@ -141,13 +141,13 @@
             // Modifica per la parte degli anni
             let yearsText = '';
             if (years > 0) {
-                yearsText = years === 1 ? '1 anno' : `${years} anni`;
+                yearsText = years === 1 ? 'anno' : `anni`;
             }
 
             const monthsText = months > 0 ? `${months} mesi` : '';
             const daysText = `${days} giorni`;
 
-            const displayText = `${years > 0 ? `<span class="highlight">${years}</span> anni, ` : ''}` +
+            const displayText = `${years > 0 ? `<span class="highlight">${years}</span> ${yearsText}, ` : ''}` +
                 `${months > 0 ? `<span class="highlight">${months}</span> mesi, ` : ''}` +
                 `<span class="highlight">${days}</span> giorni`;
 
