@@ -16,7 +16,7 @@
             color: #e4e4e4;
             text-align: center;
             min-height: 100vh; /* Per garantire l'altezza completa */
-            overflow: hidden; /* Per evitare che i cuori "escono" fuori dalla pagina */
+            
         }
 
         h1,
@@ -108,7 +108,7 @@
             document.getElementById('timer').innerHTML = displayText;
         }
 
-        function addHeart(event) {
+                function addHeart(event) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
 
