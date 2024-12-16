@@ -147,7 +147,9 @@
             const monthsText = months > 0 ? `${months} mesi` : '';
             const daysText = `${days} giorni`;
 
-            const displayText = [yearsText, monthsText, daysText].filter(Boolean).join(', ');
+            const displayText = `${years > 0 ? `<span class="highlight">${years}</span> anni, ` : ''}` +
+                `${months > 0 ? `<span class="highlight">${months}</span> mesi, ` : ''}` +
+                `<span class="highlight">${days}</span> giorni`;
 
             document.getElementById('timer').innerHTML = displayText;
 
