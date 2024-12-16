@@ -15,7 +15,8 @@
             background-color: #141414;
             color: #e4e4e4;
             text-align: center;
-            min-height: 100vh; /* Per garantire l'altezza completa */
+            min-height: 100vh;
+            /* Per garantire l'altezza completa */
         }
 
         h1,
@@ -115,6 +116,18 @@
     <script>
         const hearts = ['💜', '🖤', '🤍', '💚', '💙'];
 
+        function getGreeting() {
+            const hour = new Date().getHours();
+
+            if (hour >= 6 && hour < 12) {
+                return 'Buon giorno';
+            } else if (hour >= 12 && hour < 18) {
+                return 'Buon pomeriggio';
+            } else {
+                return 'Buona sera';
+            }
+        }
+
         function updateTimer() {
             const startDate = new Date('2024-08-25T00:00:00');
             const now = new Date();
@@ -130,8 +143,11 @@
 
             document.getElementById('timer').innerHTML = displayText;
 
-            // Crea il link per il WhatsApp con il testo predefinito
-            const whatsappMessage = `Stiamo insieme da ${years > 0 ? years : 0} anni, ${months > 0 ? months : 0} mesi, e ${days} giorni, e ancora non...`;
+            // Crea il messaggio con il saluto dinamico
+            const greeting = getGreeting();
+            const whatsappMessage = `${greeting}, avrei un reclamo da farle. Stiamo insieme da ${years > 0 ? years : 0} anni, ${months > 0 ? months : 0} mesi, e ${days} giorni, e ancora non...`;
+
+            // Imposta il link di WhatsApp con il messaggio predefinito
             document.getElementById('whatsappLink').href = `https://wa.me/393484601320?text=${encodeURIComponent(whatsappMessage)}`;
         }
 
