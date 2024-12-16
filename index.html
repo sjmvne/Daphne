@@ -153,9 +153,12 @@
 
             document.getElementById('timer').innerHTML = displayText;
 
+            const whatsAppText = `${years > 0 ? `${years} ${yearsText}, ` : ''}` +
+                `${months > 0 ? `${months} mesi, ` : ''}` +
+                `${days} giorni`;
             // Crea il messaggio con il saluto dinamico
             const greeting = getGreeting();
-            const whatsappMessage = `${greeting}, avrei un reclamo da farle. Stiamo insieme da ${displayText}, e ancora non...`;
+            const whatsappMessage = `${greeting}, avrei un reclamo da farle. Stiamo insieme da ${whatsAppText}, e ancora non...`;
 
             // Imposta il link di WhatsApp con il messaggio predefinito
             document.getElementById('whatsappLink').href = `https://wa.me/393484601320?text=${encodeURIComponent(whatsappMessage)}`;
