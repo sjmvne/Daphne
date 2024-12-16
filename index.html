@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,27 +34,37 @@
             font-weight: bold;
             color: #a82ecd;
         }
-        
-        p{
+
+        p {
             padding-left: 20px;
             padding-right: 20px;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <p>Ciao amore, volevo dirti che ti amo tantissimo, e spero che tu possa gradire questo regalino.
-    <br>Ci ho messo davvero tantissimo tempo per prepararlo, soprattutto trovare tutte le canzoni non è stato facile, e spero che alcune non ti facciano cringiare...ma hanno un bel testo anche se non sono del tuo genere🖤</p>
-    <h1>Insieme dal 25 Agosto 2024</h1>
-    <p>Il tempo trascorso da quel giorno:</p>
+    <h2>Ciao Amore Mio</h2>
+    <p>Volevo solo dirti che ti amo tantissimo, e spero che tu possa gradire questo regalino🎁<br>
+        <br>Ci ho messo davvero molto tempo ed impegno nel prepararlo, soprattutto trovare tutte le canzoni non è stato
+        facile, e
+        spero che alcune non ti facciano "cringiare". <br>Ma tutto sommato, hanno un bel testo, anche se alcune non sono del
+        tuo genere preferito🖤<br><br><br>
+    </p>
+
+    <p>Ricordo che mi dissi qualcosa riguardo il tener conto dei mesi e degli anni che passano, che non ci fai caso o
+        semplicemente non ti va di fare i conti.<br><br><br><br>Quindi, quando vorrai, te lo ricorderà questa pagina creata
+        apposta per te che<br><br><b>STIAMO INSIEME DA</b></p>
     <div id="timer">Caricamento...</div>
-    <p>Ti amo</p>
+    <br><br><br><br>
+    <h2>Ti Amo</h2><br><br>
+    <p style="font-size:0.7rem;">(la pagina calcola in automatico i secondi, i giorni, <i><b>tutte cose tutte cose ecc...</b></i> troppo nerd? 🖤)</p>
 
     <script>
         function updateTimer() {
             const startDate = new Date('2024-08-25T00:00:00');
             const now = new Date();
-            
+
             const diff = now - startDate; // Differenza in millisecondi
             const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
             const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
@@ -70,4 +81,5 @@
         setInterval(updateTimer, 1000 * 60 * 60 * 24); // Aggiorna ogni giorno
     </script>
 </body>
+
 </html>
