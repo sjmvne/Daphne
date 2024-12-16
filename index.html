@@ -16,7 +16,6 @@
             color: #e4e4e4;
             text-align: center;
             min-height: 100vh; /* Per garantire l'altezza completa */
-            
         }
 
         h1,
@@ -43,7 +42,7 @@
         }
 
         .footer {
-            margin-top:80%;
+            margin-top: 80%;
             /* Spinge l'elemento verso il fondo */
             font-size: 0.8rem;
         }
@@ -66,16 +65,32 @@
                 transform: translateY(-200px) scale(0.5);
             }
         }
+
+        /* Stile per il pulsante WhatsApp */
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    
+
     <p>
         <b>SOPPORTI LA TUA COZZA DA:</b>
     </p>
-   
+
     <div id="timer">Caricamento...</div>
     <p style="font-size: xx-small;"><em>Clicca sul timer!</em></p>
 
@@ -86,6 +101,10 @@
         sono tutte del tuo genere preferito<br>🖤
     </p>
 
+    <!-- Pulsante Reclamo -->
+    <a id="whatsappLink" href="#" target="_blank">
+        <button class="whatsapp-btn">Fai un Reclamo su WhatsApp</button>
+    </a>
 
     <!-- Footer -->
     <div class="footer">
@@ -95,6 +114,7 @@
 
     <script>
         const hearts = ['💜', '🖤', '🤍', '💚', '💙'];
+
         function updateTimer() {
             const startDate = new Date('2024-08-25T00:00:00');
             const now = new Date();
@@ -109,9 +129,13 @@
                 `<span class="highlight">${days}</span> giorni`;
 
             document.getElementById('timer').innerHTML = displayText;
+
+            // Crea il link per il WhatsApp con il testo predefinito
+            const whatsappMessage = `Stiamo insieme da ${years > 0 ? years : 0} anni, ${months > 0 ? months : 0} mesi, e ${days} giorni, e ancora non...`;
+            document.getElementById('whatsappLink').href = `https://wa.me/393484601320?text=${encodeURIComponent(whatsappMessage)}`;
         }
 
-                function addHeart(event) {
+        function addHeart(event) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
 
