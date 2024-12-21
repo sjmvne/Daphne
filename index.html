@@ -16,7 +16,6 @@
             color: #e2e2e2;
             text-align: center;
             min-height: 100vh;
-            /* Per garantire l'altezza completa */
         }
 
         h1,
@@ -43,7 +42,6 @@
 
         .footer {
             margin-top: 20%;
-            /* Spinge l'elemento verso il fondo */
             font-size: 0.8rem;
         }
 
@@ -66,7 +64,6 @@
             }
         }
 
-        /* Stile per il pulsante WhatsApp */
         .whatsapp-btn {
             background-color: #25D366;
             color: white;
@@ -82,19 +79,58 @@
         }
 
         @keyframes battito {
-      0% { transform: scale(1); }
-      30% { transform: scale(1.1); }
-      50% { transform: scale(1.3); }
-      70% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
+            0% {
+                transform: scale(1);
+            }
 
-    .battito {
-      display: inline-block;
-      font-size: 3rem;
-      animation: battito 1s ease-in-out infinite;
-    }
+            30% {
+                transform: scale(1.1);
+            }
 
+            50% {
+                transform: scale(1.3);
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .battito {
+            display: inline-block;
+            font-size: 3rem;
+            animation: battito 1s ease-in-out infinite;
+        }
+
+        /* Stile per la sezione "Come scannerizzo i codici Spotify?" */
+        .spotify-section {
+            display: none;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .spotify-section img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px 0;
+        }
+
+        .toggle-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .toggle-btn:hover {
+            background-color: #45a049;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -106,20 +142,34 @@
     </h3>
 
     <div id="timer">Caricamento...</div>
-    
 
     <h2></h2>
     <p>Volevo solo dirti che ti amo tantissimo, e spero che questo regalino fatto a mano ti piaccia.<br>🎁<br>
         <br>Ci ho messo davvero molto tempo ed impegno nel prepararlo, spero che alcune canzoni non ti facciano "cringiare". <br>Ma ciò che per me conta è quello che hanno da dirti, anche se non
         sono tutte del tuo genere preferito, spero apprezzerai.<br><h2 class="battito" id="battito">🖤</h2><p style="font-size: xx-small;"><em>Cliccami!</em></p>
+            <!-- Pulsante per aprire/chiudere la sezione Spotify -->
+     <br>
+     <br>
+    <button class="toggle-btn" onclick="toggleSpotifySection()">Come scannerizzo i codici Spotify?</button>
+
+    <!-- Sezione con le immagini per il codice Spotify -->
+    <div id="spotifySection" class="spotify-section">
+        <p>Vai sulla lente "Cerca":</p>
+        <img src="img/Screen Spoty 1.jpg" alt="Screen Spoty 1">
+        <p>Clicca la fotocamera:</p>
+        <img src="img/Screen Spoty 2.jpg" alt="Screen Spoty 2">
+        <p>Scannerizza!</p>
+    </div>
+    <br><br>
         <p>Utilizza il pulsante qui sotto per mandare un reclamo di qualsiasi tipo</p>
-    </p>
+   
 
     <!-- Pulsante Reclamo -->
     <a id="whatsappLink" href="#" target="_blank">
         <button class="whatsapp-btn">Fai un Reclamo su WhatsApp</button>
     </a><br>
     <small>(mi pentirò di questo pulsante)</small>
+
 
     <!-- Footer -->
     <div class="footer">
@@ -151,7 +201,6 @@
             const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
             const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
 
-            // Modifica per la parte degli anni
             let yearsText = '';
             if (years > 0) {
                 yearsText = years === 1 ? 'anno' : `anni`;
@@ -169,49 +218,49 @@
             const whatsAppText = `${years > 0 ? `${years} ${yearsText}, ` : ''}` +
                 `${months > 0 ? `${months} mesi, ` : ''}` +
                 `${days} giorni`;
-            // Crea il messaggio con il saluto dinamico
             const greeting = getGreeting();
             const whatsappMessage = `${greeting}, avrei un reclamo da farle. Stiamo insieme da ${whatsAppText}, e ancora non...`;
 
-            // Imposta il link di WhatsApp con il messaggio predefinito
             document.getElementById('whatsappLink').href = `https://wa.me/393484601320?text=${encodeURIComponent(whatsappMessage)}`;
         }
-
 
         function addHeart(event) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
 
-            // Scegli un cuore casuale
             const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
             heart.textContent = randomHeart;
 
-            // Genera una dimensione casuale per il cuore
-            const size = Math.random() * 2 + 1; // Dimensione tra 1 e 3 rem
+            const size = Math.random() * 2 + 1;
             heart.style.fontSize = `${size}rem`;
 
-            // Posizionare il cuore nel punto cliccato
             heart.style.left = `${event.clientX}px`;
             heart.style.top = `${event.clientY}px`;
 
-            // Aggiungi una rotazione casuale iniziale
-            const rotation = Math.random() * 360; // Rotazione tra 0 e 360 gradi
+            const rotation = Math.random() * 360;
             heart.style.transform = `rotate(${rotation}deg)`;
 
             document.body.appendChild(heart);
 
-            // Rimuovere il cuore dopo l'animazione
             heart.addEventListener('animationend', () => {
                 heart.remove();
             });
         }
 
-        // Aggiungi listener al timer
         document.getElementById('battito').addEventListener('click', addHeart);
 
-        // Aggiorna il timer
         updateTimer();
-        setInterval(updateTimer, 1000 * 60 * 60 * 24); // Aggiorna ogni giorno
+        setInterval(updateTimer, 1000 * 60 * 60 * 24);
+
+        // Funzione per aprire/chiudere la sezione Spotify
+        function toggleSpotifySection() {
+            const spotifySection = document.getElementById('spotifySection');
+            if (spotifySection.style.display === 'block') {
+                spotifySection.style.display = 'none';
+            } else {
+                spotifySection.style.display = 'block';
+            }
+        }
     </script>
 </body>
 
