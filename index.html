@@ -106,12 +106,12 @@
     </h3>
 
     <div id="timer">Caricamento...</div>
-    <p style="font-size: xx-small;"><em>Clicca sul timer!</em></p>
+    
 
     <h2></h2>
     <p>Volevo solo dirti che ti amo tantissimo, e spero che questo regalino fatto a mano ti piaccia.<br>🎁<br>
         <br>Ci ho messo davvero molto tempo ed impegno nel prepararlo, spero che alcune canzoni non ti facciano "cringiare". <br>Ma ciò che per me conta è quello che hanno da dirti, anche se non
-        sono tutte del tuo genere preferito, spero apprezzerai.<br><h2 class="battito">🖤</h2>
+        sono tutte del tuo genere preferito, spero apprezzerai.<br><h2 class="battito" id="battito">🖤</h2><p style="font-size: xx-small;"><em>Cliccami!</em></p>
         <p>Utilizza il pulsante qui sotto per mandare un reclamo di qualsiasi tipo</p>
     </p>
 
@@ -207,7 +207,7 @@
         }
 
         // Aggiungi listener al timer
-        document.getElementById('timer').addEventListener('click', addHeart);
+        document.getElementById('battito').addEventListener('click', addHeart);
 
         // Aggiorna il timer
         updateTimer();
